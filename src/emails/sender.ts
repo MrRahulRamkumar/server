@@ -145,7 +145,7 @@ export default function emailSender<T extends TemplateData>(
 
     // log props to the console in development (helpful for e.g. clicking verification links)
     if (process.env.NODE_ENV === 'development') {
-      logger.info(props)
+      logger.info(JSON.stringify(props))
     }
 
     if (!env.POSTMARK_API_KEY) {
