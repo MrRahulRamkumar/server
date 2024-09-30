@@ -143,12 +143,9 @@ export default function emailSender<T extends TemplateData>(
       return { htmlTmpFile }
     }
 
-    // log props to the console in development (helpful for e.g. clicking verification links)
-    if (process.env.NODE_ENV === 'development') {
-      logger.info(JSON.stringify(props))
-    }
-
     if (!env.POSTMARK_API_KEY) {
+      // log the email that would have been sent
+      logger.info(JSON.stringify(props))
       logger.info('- ⚠️ Not sending email because POSTMARK_API_KEY is not set.')
       return
     }
